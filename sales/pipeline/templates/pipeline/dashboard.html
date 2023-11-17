@@ -1,0 +1,60 @@
+{% extends 'pipeline/base.html' %}
+{% block content %}
+    <h5> Welcome, {{user}}! 👋 </h5>
+    <hr>
+    <a class="btn btn-outline-primary btn-sm btn btn-success" href="{% url 'create-record' %}">
+        Create a new record &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </a>
+    <hr> 
+    <table class="table table-hover table-bordered">
+        <thead class="table-info text-center">
+            <tr>
+                <th scope="col"> ID </th>
+                <th scope="col"> Full name </th>
+                <th scope="col"> Email </th>
+                <th scope="col"> Phone </th>
+                <th scope="col"> Address </th>
+                <th scope="col"> county </th>
+                <th scope="col"> Nearest Town </th>
+                <th scope="col"> Current Insurer </th>
+                <th scope="col"> Intermediary Name </th>
+                <th scope="col"> Engagement Date </th>
+                <th scope="col"> Anticipated Closure Date </th>
+                <th scope="col"> Business Class </th>
+                <th scope="col"> Expected Premium </th>
+                <th scope="col"> Chances of Closure </th>
+                <th scope="col"> Current Stage </th>
+                <th scope="col"> Additional Remarks </th>
+                <th scope="col"> Initial Date </th>
+                <th scope="col"> View </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if records %}
+            {% for record in records %}
+            <tr>
+                <td> {{record.id}} </td>
+                <td> {{record.first_name}}  {{record.last_name}} </td>
+                <td> {{record.email}} </td>
+                <td> {{record.phone}} </td>
+                <td> {{record.address}} </td>
+                <td> {{record.county}} </td>
+                <td> {{record.nearest_town}} </td>
+                <td> {{record.current_insurer}} </td>
+                <td> {{record.intermediary_name}} </td>
+                <td> {{record.engagement_date}} </td>
+                <td> {{record.anticipated_closure_date}} </td>
+                <td> {{record.business_class}} </td>
+                <td> {{record.expected_premium}} </td>
+                <td> {{record.chances_of_closure}} </td>
+                <td> {{record.current_stage}} </td>
+                <td> {{record.additional_remarks}} </td>
+                <td> {{record.creation_date}} </td>
+
+                <td> <a class="btn btn-success btn-sm" href="{% url 'record' record.id %}"> <i class="fa fa-eye" aria-hidden="true"></i> </a> </td>
+            </tr>
+            {% endfor %}       
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'pipeline/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<body>
+    <div class="container bg-light shadow-md p-5 form-layout">
+        <h3> Update Record </h3>
+        <h6> Change the entry you want in this record. </h6>
+        <hr>
+        <br>
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            {{form.first_name|as_crispy_field}}
+            <br>
+            {{form.last_name|as_crispy_field}}
+            <br>
+            {{form.email|as_crispy_field}}
+            <br>
+            {{form.phone|as_crispy_field}}
+            <br>
+            {{form.address|as_crispy_field}}
+            <br>
+            {{form.county|as_crispy_field}}
+            <br>
+            {{form.nearest_town|as_crispy_field}}
+            <br>
+            {{form.current_insurer|as_crispy_field}}
+            <br>
+            {{form.intermediary_name|as_crispy_field}}
+            <br>
+            {{form.engagement_date|as_crispy_field}}
+            <br>
+            {{form.anticipated_closure_date|as_crispy_field}}
+            <br>
+            {{form.business_class|as_crispy_field}}
+            <br>
+            {{form.expected_premium|as_crispy_field}}
+            <br>
+            {{form.chances_of_closure|as_crispy_field}}
+            <br>
+            {{form.current_stage|as_crispy_field}}
+            <br>
+            {{form.additional_remarks|as_crispy_field}}
+            <br>
+            <button type="submit" class="btn btn-info">                
+                Update record &nbsp; <i class="fa fa-plus" aria-hidden="true"></i>           
+            </button>
+            &nbsp;            
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary"> 
+                Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+        </form>
+    </div>
+    <br>
+</body>
+{% endblock %}
